@@ -24,7 +24,7 @@ const Index = () => {
     <div className="max-w-md mx-auto bg-white rounded-xl shadow-lg p-8 animate-fade-in">
       <div className="text-center mb-8">
         <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-green-500 rounded-full mx-auto mb-4 flex items-center justify-center">
-          <Icon name="Brain" size={32} className="text-white" />
+          <Icon name="brain" size={32} className="text-white" />
         </div>
         <h1 className="text-2xl font-bold text-gray-800 mb-2">Цифровой Двойник</h1>
         <p className="text-gray-600">Создание вашего ИИ-профиля</p>
@@ -49,14 +49,19 @@ const Index = () => {
           className="w-full bg-gradient-to-r from-blue-500 to-green-500 hover:from-blue-600 hover:to-green-600 transition-all duration-300"
           disabled={!user.name || !user.email}
         >
-          <Icon name="LogIn" className="mr-2" size={16} />
+          <Icon name="log-in" className="mr-2" size={16} />
           Создать профиль
         </Button>
       </div>
     </div>
   );
 
-  const DataModule = ({ title, icon, data, description }) => (
+  const DataModule = ({ title, icon, data, description }: {
+    title: string;
+    icon: string;
+    data: Record<string, any>;
+    description: string;
+  }) => (
     <Card className="hover:shadow-lg transition-shadow duration-300 animate-fade-in">
       <CardHeader className="pb-3">
         <div className="flex items-center gap-3">
@@ -90,14 +95,14 @@ const Index = () => {
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-green-500 rounded-lg flex items-center justify-center">
-                <Icon name="Brain" size={16} className="text-white" />
+                <Icon name="brain" size={16} className="text-white" />
               </div>
               <h1 className="text-lg font-semibold text-gray-900">Цифровой Двойник</h1>
             </div>
             <div className="flex items-center gap-3">
               <span className="text-sm text-gray-600">Привет, {user.name}!</span>
               <Button variant="outline" size="sm" onClick={() => setIsAuthenticated(false)}>
-                <Icon name="LogOut" size={14} />
+                <Icon name="log-out" size={14} />
               </Button>
             </div>
           </div>
@@ -124,7 +129,7 @@ const Index = () => {
                       <p className="text-sm font-medium text-blue-600">Точность ИИ</p>
                       <p className="text-2xl font-bold text-blue-800">{demoData.analytics.aiAccuracy}%</p>
                     </div>
-                    <Icon name="TrendingUp" className="text-blue-600" size={24} />
+                    <Icon name="trending-up" className="text-blue-600" size={24} />
                   </div>
                   <Progress value={demoData.analytics.aiAccuracy} className="mt-3" />
                 </CardContent>
@@ -137,7 +142,7 @@ const Index = () => {
                       <p className="text-sm font-medium text-green-600">Паттерны</p>
                       <p className="text-2xl font-bold text-green-800">{demoData.analytics.patterns}</p>
                     </div>
-                    <Icon name="BarChart3" className="text-green-600" size={24} />
+                    <Icon name="bar-chart-3" className="text-green-600" size={24} />
                   </div>
                 </CardContent>
               </Card>
@@ -149,7 +154,7 @@ const Index = () => {
                       <p className="text-sm font-medium text-purple-600">Данные</p>
                       <p className="text-2xl font-bold text-purple-800">{demoData.analytics.dataPoints.toLocaleString()}</p>
                     </div>
-                    <Icon name="Database" className="text-purple-600" size={24} />
+                    <Icon name="database" className="text-purple-600" size={24} />
                   </div>
                 </CardContent>
               </Card>
@@ -159,13 +164,13 @@ const Index = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <DataModule 
                 title="Физические показатели"
-                icon="Activity"
+                icon="activity"
                 data={demoData.health}
                 description="Автоматический сбор данных о здоровье и активности"
               />
               <DataModule 
                 title="Поведенческие паттерны"
-                icon="Smartphone"
+                icon="smartphone"
                 data={demoData.behavior}
                 description="Анализ использования устройств и коммуникации"
               />
@@ -175,7 +180,7 @@ const Index = () => {
             <Card className="animate-fade-in">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Icon name="Brain" size={20} />
+                  <Icon name="brain" size={20} />
                   ИИ-Анализ
                 </CardTitle>
               </CardHeader>
@@ -215,7 +220,7 @@ const Index = () => {
                   />
                   <p className="text-gray-600 mb-4">Расширенная настройка профиля будет доступна в следующих версиях</p>
                   <Button variant="outline">
-                    <Icon name="Settings" className="mr-2" size={16} />
+                    <Icon name="settings" className="mr-2" size={16} />
                     Настроить профиль
                   </Button>
                 </div>
@@ -226,12 +231,12 @@ const Index = () => {
           <TabsContent value="modules">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
-                { name: 'Физическая активность', icon: 'Activity', status: 'active' },
-                { name: 'Речевые паттерны', icon: 'Mic', status: 'active' },
-                { name: 'Геолокация', icon: 'MapPin', status: 'pending' },
-                { name: 'Эмоциональное состояние', icon: 'Heart', status: 'pending' },
-                { name: 'Социальные связи', icon: 'Users', status: 'pending' },
-                { name: 'Рабочие привычки', icon: 'Briefcase', status: 'pending' }
+                { name: 'Физическая активность', icon: 'activity', status: 'active' },
+                { name: 'Речевые паттерны', icon: 'mic', status: 'active' },
+                { name: 'Геолокация', icon: 'map-pin', status: 'pending' },
+                { name: 'Эмоциональное состояние', icon: 'heart', status: 'pending' },
+                { name: 'Социальные связи', icon: 'users', status: 'pending' },
+                { name: 'Рабочие привычки', icon: 'briefcase', status: 'pending' }
               ].map((module) => (
                 <Card key={module.name} className="hover:shadow-lg transition-shadow duration-300">
                   <CardContent className="p-6">
@@ -268,7 +273,7 @@ const Index = () => {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Icon name="Clock" size={20} />
+                  <Icon name="clock" size={20} />
                   История активности
                 </CardTitle>
               </CardHeader>
